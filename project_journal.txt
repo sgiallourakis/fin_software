@@ -1,0 +1,13 @@
+----- 6/23/2024 -----
+SG
+--TODAYS GOALS--
+		The goal for today is to write code to test for a correlation between "the price of a commodity" and "the stock price" of a company
+	whose main business is closely related to said commodity. (If P then S). To be more precise (If P inc then S inc).
+
+	For any question realated to commodities, I typically use Taseko Mines (TGB) as my test case. I choose TGB because they own a copper mine, of the largest in the US, full stop. That is all they do. So they are the simplest case in my opinion. This will obviously be more thouroghly tested. Today is simply can we ouptut an answer and does the output make sense. 
+
+	-PLAN-
+		1 - Ingest data for TASEKO MINES and Copper Prices.
+		2 - Store "End of Day" Prices for each in NUMPY ARRAYS.
+		3 - Run analysis on each of these sets of data.
+				a -  
