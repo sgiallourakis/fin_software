@@ -32,4 +32,28 @@ SG
 			- {apikey} = is the key we use for accessing alpha vantage api.
 					EX: 5623H2384H108384H2123 = apikey
 					NOTE--As of right now this would need to requested form Steven directly.
+
+
+----- 6/24/2024 -----
+SG
+--TODAYS GOAL--
+		Todays goal is to finish creating the functions needed to completely injest data and prepare it for analysis. Yesterday's goals were
+	ambitious. I need to be more thourogh in my though process. Instead of jumping into analysis i should be laying the infrastructure for all possible goals. This means creating injested tools for different types of data and preparing the database needed to perform accurate and good queries of data. This means not just storing json files, but putting those files into a database for proper data storage.
+
+	--PLAN--
+	Create the following functions:
+		json_to_database
+			- this function will update the database with any json data
+
+		database_check
+			- this function will check the database for any data related to the requested stock. If data exists it will display the date that
+			the data was last updated. The purpose of this is to give the user the option to update the data or use it as is. 
+
+
+
+
+
+
+
+
 					
