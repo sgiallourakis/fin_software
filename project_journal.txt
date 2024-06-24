@@ -10,4 +10,26 @@ SG
 		1 - Ingest data for TASEKO MINES and Copper Prices.
 		2 - Store "End of Day" Prices for each in NUMPY ARRAYS.
 		3 - Run analysis on each of these sets of data.
-				a -  
+				a -  Using "End of Day" prices assess trend of prices and compare them with stock prices.
+
+
+
+	NOTES FROM THE DAY
+	Should not have ever assumed that I could have completed all of this today. Its Sunday. On the bright side I have learned a lot and did make some progress. I have first part of the data injestion coded up. The new funcion "av_pull", pulls data from alpha vantage and saves the data as a json file. This was done for a couple of different reason. First, i want minimize the pings to alpha vantage. As a free account there are limitations to the number api request we can ping them for each day. Secondly, offline data allows for offline analysis.
+
+	--NEW FUNCTION--
+
+	av_pull -- {symbol, interval, apikey}
+			- {symbol} = the stock symbol for uou particular stock
+					EX: Taseko Mines mines {symbol} = TGB
+
+			- {interval} = the length of intervals we would like to request from alph_vantage. The example i am using is requesting
+				all transactions to be in 1 min intervals. 
+					NOTE -- in testing for taseko mines it is pulling in larger intervals. I do believe this is becuase there aren't
+						as many transactions as some something like NVIDIA.
+					EX: 1 Minute Interval -> '1min' = {interval}
+
+			- {apikey} = is the key we use for accessing alpha vantage api.
+					EX: 5623H2384H108384H2123 = apikey
+					NOTE--As of right now this would need to requested form Steven directly.
+					
