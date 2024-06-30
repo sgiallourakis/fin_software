@@ -49,6 +49,15 @@ SG
 			- this function will check the database for any data related to the requested stock. If data exists it will display the date that
 			the data was last updated. The purpose of this is to give the user the option to update the data or use it as is. 
 
+	NOTES FROM TODAY
+		I was thinking that i might need to work on my database schema and create the requisite database before writing the functions outlined in the PLAN for today.
+
+----- 6/30/2024 -----
+SG
+--TODAYS GOAL--
+	I am working on getting the database up and running. Since we are not interested in day trading, are columns are going to be 
+	ID, Date, Open Price, Close Price, Daily Price Change.
+
 
 
 
