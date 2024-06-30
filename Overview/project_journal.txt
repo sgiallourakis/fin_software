@@ -56,7 +56,14 @@ SG
 SG
 --TODAYS GOAL--
 	I am working on getting the database up and running. Since we are not interested in day trading, are columns are going to be 
-	ID, Date, Open Price, Close Price, Daily Price Change.
+	ID, Date, Open Price, Close Price, Daily Price Change. 
+
+	I am only going to store the daily prices in the database. If I or someone wants to do a more granular analysis they can request one. 
+
+		Note: In the final release of this there will be buttons that will allow the user to make a request from yfinance API for information that is as granular as 1min intervals. For now I will stick with daily open and close and the price change that day will be calculated as well.
+
+
+ACCOMPLISHED -- Database called fin_data has now been created with the columns, symbol; date; open_price; close_price, daily_change;.
 
 
 
