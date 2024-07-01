@@ -65,7 +65,14 @@ SG
 
 ACCOMPLISHED -- Database called fin_data has now been created with the columns, symbol; date; open_price; close_price, daily_change;.
 
+----- 07/01/2024 -----
+SG
+--TODAYS GOALS--
+	Today's goal is to test how easy it is to implement yfinance in my data aquisition. I want to also finish the initial code for data aquisition/pre-processing. The new code will contain all the pre-processing to get the data ready for addition to the database. Using "open" price, and "close" price, i will calculate daily change. 
 
+
+	NOTES FROM TODAY:
+	 Yfinance has been far easier to use. NO api key is required and the data is up to date. Testing for initial download went smoothly. Will change over all code to use yfinance instead of alphavantage.
 
 
 
