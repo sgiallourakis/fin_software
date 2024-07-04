@@ -74,6 +74,37 @@ SG
 	NOTES FROM TODAY:
 	 Yfinance has been far easier to use. NO api key is required and the data is up to date. Testing for initial download went smoothly. Will change over all code to use yfinance instead of alphavantage.
 
+ACCOMPLISHED -- yfinance was tested and it worked really easily.
+
+
+----- 07/02/2024 -----
+SG
+--TODAYS GOALS--
+	Today's main goal is to write the code that will take the yfinance data and add it to the fin_data database. It will look for duplicate data. It will also calculate the daily change from the open an close prices.
+
+	I will also be deleting all code related to alpha vantage.
+
+	NOTES--
+	This did not get finished today.
+
+----- 07/04/2024 -----
+SG
+--TODAYS GOALS--
+	Finish goals from "07/02/2024"
+	Change primary key of database from ID to stock "symbol". In "stocks" table of database - "fin_data".
+
+ACCOMPLISHED -- 
+	ID column was dropped from database
+	Primary key was changed and is now (symbol, date)
+		-- The above two were implemented at the database level.
+
+	dataframe that comes from yfinance is altered upon download, it removes the columns "High" and "Low". It adds the column "daily_change" that is , daily_change = "Close" - "Open".
+	GOAL from --07/02/2024 is complete
+		-- Data can be downloaded now and added to the 'stocks' table in 'fin_data' db. The code removes High and Low columns and adds the daily change column. It also adjust the 'date' column in the dataframe and make that column called "Date". Before it had no name. The database handles all duplicates as intended.
+
+		Today was a good day!!
+---------------
+
 
 
 
