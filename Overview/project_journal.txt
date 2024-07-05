@@ -106,6 +106,31 @@ ACCOMPLISHED --
 ---------------
 
 
+----- 07/05/2024 -----
+SG
+--TODAYS GOAL--
+	Update database table "stocks". I want to add a column called "percent_change". This column will contain the daily percent change. It is calculated by;
+
+										((Open / Close) - 1) * 100
+
+										The above equation was wrong, it should be
+
+										((Close - Open) / Open) * 100
+
+	I want to start populating my database with the top 100 list of stocks. Then I will move on to commodities today. I do not think i will be able to get to running any analysis today.
+
+
+
+--ACCOMPLISHED--
+	I updated the database "stocks" with the new column "percent_change". 
+							percent_change = ((Close - Open) / Open) * 100
+
+	I successfuly populated "stocks" with ~ the top 100 NSYE stocks.
+	I was also able to get pgadmin setup on my laptop.
+
+	
+
+
 
 
 
