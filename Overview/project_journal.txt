@@ -142,6 +142,16 @@ SG
 
 	I am going to commit but i need to change the file for data_acquisition to .py
 
+	I ended up not installing that new package. I instead moved the function to a new file called fin_func.py. No new package was required to run this. I did need to update the database and restart the kernal so that is could run correctly.
+
+--ACCOMPLISHED--
+	First commodities data was successfuly downloaded to the table 'commodities'.
+	New file was created called fin_func.py -- this file contains ths functions needed to run fin_software.
+	Deleted old file called 'fin_func.ipynb'.
+
+--------
+
+
 
 	
 
