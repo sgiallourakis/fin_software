@@ -128,6 +128,21 @@ SG
 	I successfuly populated "stocks" with ~ the top 100 NSYE stocks.
 	I was also able to get pgadmin setup on my laptop.
 
+
+
+----- 07/06/2024 -----
+SG
+--TODAYS GOAL--
+	Begin downloading commodities data.
+	Create new file to hold functions for data acquisition.
+
+
+--NOTES--
+	I need to install a new package to handle importing .ipynb files. Apparantely when you attempt to import functions from another pythong file, the import function by default is looking for .py files and not .ipynb files. So the package "import-ipynb" needs to be installed. 
+
+	I am going to commit but i need to change the file for data_acquisition to .py
+
+
 	
 
 
