@@ -163,8 +163,19 @@ SG
 SG
 --TODAYS GOAL--
 	Finish database design.
+	Create new tables based on database design.
+	Write code for semantic analysis of articles.
 --ACCOMPLISHED--
 	Initial Database design is complete. This was done in LucidChart. PDF downloaded.
+	Tables created for database. Current List:
+								daily_stock_prices
+								daily_commod_prices
+								company_list
+								commodities_list
+								article_list
+								article_data
+
+
 
 
 	
