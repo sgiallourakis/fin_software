@@ -151,6 +151,20 @@ SG
 
 --------
 
+----- 07/08/2024 -----
+SG
+--TODAYS GOAL--
+	Design Database
+
+--NOTES--
+	Didn't finish this today
+
+----- 07/09/2024 -----
+SG
+--TODAYS GOAL--
+	Finish database design.
+--ACCOMPLISHED--
+	Initial Database design is complete. This was done in LucidChart. PDF downloaded.
 
 
 	
