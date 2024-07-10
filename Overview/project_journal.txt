@@ -164,7 +164,7 @@ SG
 --TODAYS GOAL--
 	Finish database design.
 	Create new tables based on database design.
-	Write code for semantic analysis of articles.
+	Write code for pulling in article text.
 --ACCOMPLISHED--
 	Initial Database design is complete. This was done in LucidChart. PDF downloaded.
 	Tables created for database. Current List:
@@ -175,8 +175,17 @@ SG
 								article_list
 								article_data
 
+--NOTES--
+	****I am currently trying to implement code that will scrape news articles from sites and perform semantic analysis. My initial URL took me to the general news page for yahoo finance. This is all well and good but i need to be able to search for specific companies. I found the url I want to use.
+
+	my_url = 'https://finance.yahoo.com/quote/'place_stock_symbol_here'/news/'
 
 
+	******** the above section is wrong ********* SG
+
+	the url should be:
+
+	my_url = 'https://finance.yahoo.com/quote/(symbol)'
 
 	
 
