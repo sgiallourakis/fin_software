@@ -1,4 +1,6 @@
 Ignore vent -- fin_env
 .ipynb_checkpoints/
-
+.DS_Store
+.idea/misc.xml
+Python_Code/__pycache__/
 *fin_env/
