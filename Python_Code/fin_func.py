@@ -36,6 +36,23 @@ def get_commodities_data(symbol, start_date, end_date):
 
 # Functions related to the database
 
+
+######BELOW CODE NEEDED TO USE DATABASE FUNCTIONS#####
+# Database connection details
+#database = 'fin_data'
+#user = 'stevengiallourakis'
+#password = 'Birdman11!' # this might not be needed depenending on where you are connecting from.
+#host = 'localhost'
+#port =  '5433'
+#connection_string = f"postgresql://{user}:{password}@{host}:{port}/{database}"
+#engine = create_engine(connection_string)
+######ABOVE CODE NEEDED TO USE DATABASE FUNCTIONS#####
+
+
+
+
+
+
 # Add new data to database using data_to_db
 # The code below uses engine, to make a connection to the database and allow for the use of sql commands.
 # It then allows for the data to be copied from the  dataframe "df = stock_data" to the table specified.
@@ -65,3 +82,25 @@ def data_to_db(df, table_name, engine):
         print(f"Duplicate entry found for {symbol} on {data['date']}. Skipping insert.")
     except Exception as e:
         print(f"An error occurred while inserting data: {e}")
+
+
+
+
+
+# Take csv data and load it into database
+def csv_to_db(file_path):
+    csv_df = pd.read_csv('file_path')
+    return csv_df
+
+
+
+
+
+# Functions related
+
+
+
+
+
+
+

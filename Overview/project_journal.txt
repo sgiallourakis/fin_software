@@ -187,6 +187,10 @@ SG
 
 	my_url = 'https://finance.yahoo.com/quote/(symbol)'
 
+
+	UPDATE--
+	I have been able to write the correct code to find the titles for each article, where the article comes from, and the link associated with each story.
+
 	
 
 
