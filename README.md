@@ -1,6 +1,6 @@
-#Financial Software
-###Creator - Steven Giallourakis
- - The purpose of this project is to bring together data science tools and machine learning tools to create a web based software to assist in stock investment decisions.
+	#Financial Software
+	###Creator - Steven Giallourakis
+ 		- The purpose of this project is to bring together data science tools and machine learning tools to create a web based software to assist in stock investment decisions.
 
  	##Stock Analysis
  		- Understanding stock behavior historically.
