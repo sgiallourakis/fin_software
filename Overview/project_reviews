@@ -1,5 +1,5 @@
 Current State of fin_software
- -- This document will keep records of the current state of the project. This means that every week I will take deep dive into what work has been completed. I want to be able to track the full progress of the project. Not just my daily goals. This document will be formal in nature. 
+ -- This document will keep records of the current state of the project. This means that every two weeks I will take deep dive into what work has been completed. I want to be able to track the full progress of the project. Not just my daily goals in the project journal. This document will be formal in nature. 
 
  AS I AM ONE PERSON, I HAVE CHOSEN TO NOT USE ANY WEB SOFTWARE TO MANAGE THESE TYPES OF ISSUES. AS THE PROJECT GROWS I WILL COME BACK TO THIS.
 
@@ -31,3 +31,132 @@ Current State of fin_software
 
 
  ----- END OF REVIEW FOR <DATE> -----
+
+
+ ----- 07/15/2024 -----
+ ----- Steven Giallouarkis -----
+
+ -- CURRENT STATE OF DATABASE --
+ 	- NAMES OF TABLES
+ 		article_data:
+ 			- This table stores data associated with the referenced article. It contains information related to the performed sentiment analysis. Articles will not put in this table until sentiment analysis has been run on the article.
+
+ 			Current Columns:
+ 				article_id
+ 				article_name
+ 				tokenized_text
+ 				semantic_labels -- (CHANGE REQUIRED - needs to be 
+ 									changed to  sentiment_labels)
+ 				stock_symbols (found in article)
+ 				commod_symbols (found in article)
+
+ 			- This table is connected to the sentiment analysis portion of the codebase. Article text will be pulled from the table "article_list". When we prepare the document for sentiment analysis, we will tokenize the text, then store that new tokenized text. Directly after sentiment analysis will be performed to determine is the article is positive or negative. It will also have company names or symbols pulled from the article and stored in the columns "stock_symbols" and "commod_symbols". This will connect the article back to our "company_list" and our "commodity_list".
+
+ 			We are storing the tokenized text becuase I want to be able to run other analyses in the future. 
+
+ 			- IMPROVEMENTS - 
+ 				(CHANGE REQUIRED - change semantic_labels to  sentiment_labels)
+
+
+ 		article_list:
+ 			- This table contains only 3 columns. It is designed to be the initial storage for all articles before analysis is performed.
+
+ 			Current Columns:
+ 				article_id
+ 				article_name
+ 				article_text
+
+ 			- This table connects directly with the web scraping portion of the codebase. Any articles that are downloaded are placed in this table. 
+
+
+ 			- IMPROVEMENTS -
+ 				ADD COLUMN - analysis_completed (TRUE OR FALSE)
+ 				This will help me keep track of articles have been run through analysis.
+
+ 		commodity_list:
+ 			- This table is used to store information regarding commodities and correlations with stocks. This is stored in the column stock_affil.
+
+ 			Current Columns:
+ 				id
+ 				commodity_name
+ 				symbol
+ 				stock_affil
+ 				commodity_type
+
+ 			- This table is connected to mulitple parts of the code base. It is found in the data aquisition section regarding commodities. It will also be used int correlation testing to analyze what stocks are correlated with each commodity. Correlation analysis needs to be performed before any stock_affil will be added to the table.
+
+
+ 		company_list:
+ 			- This table is my master list for companies. It stored their name stock_symbol and any commodity affilitations.
+
+ 			Current Columns:
+ 				id
+ 				company_name
+ 				symbol
+ 				com_affil
+
+ 			- This table is connected to most of the code base. It is connected to data aquisition, correlation analysis, sentiment analysis.
+
+
+ 		daily_commod_prices:
+ 			- This table contains the daily commodity prices. This is not auto-updated. It is only updated as USER's download data. I will slowly update and add more data and different commodites to the table.
+
+ 			CURRENT COLUMNS:
+ 				symbol
+ 				Date
+ 				Open
+ 				Close
+ 				daily_change
+ 				percent_change
+
+ 			- This table is connected to correlation analysis, the commodity_list. The daily_change columns is calculated from the Open and Close columns. The same is true of the percent_change column.
+
+
+ 		daily_stock_prices:
+ 			- This table contains daily stock prices. This is not auto-updated. It is updated as I and other USER's use the software.
+
+ 			CURRENT COLUMNS:
+ 				symbols
+ 				Date
+ 				Open
+ 				Close
+ 				daily_change
+ 				percent_change
+
+ 			- This table is connected to much of the codebase. It will be used to view data, run correlation analysis among other statistical analyses the use wants to run.
+
+
+ -- CURRENT STATE OF THE CODEBASE --
+ 	- FRONT-END -
+ 		(As the front-end starts to be built, I want to continue to test the front-end and make sure that it is functioning correctly. Buttons etc)
+
+ 		- Front-end design has not been worked on much yet. This needs to change for next review.
+
+ 		NEEDS TO HAPPEN: CREATE FRONT END DESIGN - BEING IN YOU HEAD IS NOT GOOD ENOUGH.
+
+
+
+ 	- BACK-END -
+
+ 		Data Acquisition:
+ 			- Code is able to download stock and commodity price data from yahoo finance, perform pre-processing and storing the data in its respective table.
+ 			- Code is able to find news headlines
+ 			- Code is not able to fulling webscrape the articles yet.
+
+
+ -- END --
+
+
+ -- COMMENTS --
+ 	- Front End NEEDS to be worked on. Even though I think I have a plan this more being fly by your seat. Front end will inform the back-end design. It will tell me what information the site needs to pull. 
+ 		- When the front-end is done, then I will be able to finish the back-end.
+
+ 	- Adjust database tables:
+ 		- In the article_data table, change the column name from semantic_labels TO sentiment_labels.
+ 		- In the article_list table, add a column that records whether the article has been tokenized.
+
+
+ ----- END OF REVIEW FOR <DATE> -----
+
+
+
