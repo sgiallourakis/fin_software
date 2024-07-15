@@ -1,0 +1,33 @@
+Current State of fin_software
+ -- This document will keep records of the current state of the project. This means that every week I will take deep dive into what work has been completed. I want to be able to track the full progress of the project. Not just my daily goals. This document will be formal in nature. 
+
+ AS I AM ONE PERSON, I HAVE CHOSEN TO NOT USE ANY WEB SOFTWARE TO MANAGE THESE TYPES OF ISSUES. AS THE PROJECT GROWS I WILL COME BACK TO THIS.
+
+ Each update will need to be formatted as follows:
+
+ ----- DATE OF REVIEW -----
+ ----- NAME OF PERSON REVIEWING -----
+
+ -- CURRENT STATE OF DATABASE --
+ 	- NAMES OF TABLES
+ 		- WHAT IS PURPOSE OF EACH TABLE?
+ 		- HOW IS EACH TABLE CONNECTED TO THE CODE BASE?
+ 	- THOUGHTS ON HOW TO IMPROVE THE DATABASE (IF NEEDED)
+
+ -- CURRENT STATE OF THE CODEBASE --
+ 	- FRONT-END -
+ 		(As the front-end starts to be built, I want to continue to test the front-end and make sure that it is functioning correctly. Buttons etc)
+
+
+
+ 	- BACK-END -
+
+
+ -- CURRENT STATE OF DESIGN --
+
+
+ -- COMMENTS --
+
+
+
+ ----- END OF REVIEW FOR <DATE> -----
