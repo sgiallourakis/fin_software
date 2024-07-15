@@ -15,6 +15,8 @@ import logging
 # It adds in the column "daily_change", which measures the change in price over the course of the day.
 
 def get_stock_data(symbol: str, start_date: str, end_date: str) -> pd.DataFrame:
+    if not isinstance(symbol, str):
+        raise TypeError("'symbol' must be a string representing a valid stock symbol")
     start_date = pd.to_datetime(start_date)
     end_date = pd.to_datetime(end_date)
     try:
@@ -23,7 +25,11 @@ def get_stock_data(symbol: str, start_date: str, end_date: str) -> pd.DataFrame:
         logging.error(f"Error downloading stock data: {e}")
         return None
 
-    stock_data = stock_data.drop(columns=['High', 'Low', 'Adj Close', 'Volume'], errors='ignore')
+    if stock_data.empty:
+        logging.error(f"Error stock data received. Aborting further operations.")
+        return None
+
+    stock_data = stock_data.drop(columns=['High', 'Low', 'Adj Close', 'Volume'], errors='ignore', inplace=True)
     stock_data['daily_change'] = stock_data['Close'] - stock_data['Open']
     stock_data['symbol'] = symbol
     stock_data.reset_index(inplace=True)
