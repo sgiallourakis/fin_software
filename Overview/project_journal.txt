@@ -191,6 +191,36 @@ SG
 	UPDATE--
 	I have been able to write the correct code to find the titles for each article, where the article comes from, and the link associated with each story.
 
+
+----- 07/17/2024 -----
+SG
+-- TODAYS GOALS --
+	- Change column names 
+		- any column named symbol needs to be changed to either "stock_symbol" or "commodity_symbol"
+			Table - company_list
+						symbol TO stock_symbol
+
+					daily_stock_prices
+						symbol TO stock_symbol
+
+					commodities_list
+						symbol TO commodity_symbol
+
+					daily_commodity_prices
+						symbol TO commodity_symbol
+
+	ACCOMPLSHED
+
+----- 07/18/2024 -----
+SG
+-- TODAYS GOAL --
+	EXAMINE DAILY STOCK DATA
+	Set up codebase to be able to pull stock information. The code will first check the company_list to see if the company exists in the database. It will then look at the daily_stock_prices, as it pulls the data it will report the dates that the current database contains. 
+
+
+
+
+
 	
 
 
