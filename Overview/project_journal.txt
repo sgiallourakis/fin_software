@@ -217,6 +217,14 @@ SG
 	EXAMINE DAILY STOCK DATA
 	Set up codebase to be able to pull stock information. The code will first check the company_list to see if the company exists in the database. It will then look at the daily_stock_prices, as it pulls the data it will report the dates that the current database contains. 
 
+-- Goal Sidelined for now--
+
+
+----- 07/25/2024 -----
+SG
+-- TODAYS GOAL --
+ 	REWRITE CORRELATION CODE
+ 		I am going to rewrite the code so that we can handle multiple stock/commodities identities. There will be a main stock that is compared against a dictionary of stock/commodity items. This will hopefully future proof some of the back end code. I want to be able to implement a front-end design that allows the user to select a max of 5 stocks and then run a correlation analysis.
 
 
 

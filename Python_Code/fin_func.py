@@ -35,9 +35,18 @@ def get_stock_data(stock_symbol: str, start_date: str, end_date: str) -> pd.Data
         logging.error(f"Error stock data received. Aborting further operations.")
         return None
 
-    stock_data = stock_data.drop(columns=['High', 'Low', 'Adj Close', 'Volume'], errors='ignore', inplace=True)
+    # Drop unnecessary columns
+    stock_data = stock_data.drop(columns=['High', 'Low', 'Adj Close', 'Volume'], errors='ignore')
+
+    # Calculate daily change and percent change
     stock_data['daily_change'] = stock_data['Close'] - stock_data['Open']
+    stock_data['percent_change'] = (
+            ((stock_data['Close'] - stock_data['Open']) / stock_data['Open']) * 100)
+
+    # Add the stock symbol column
     stock_data['stock_symbol'] = stock_symbol
+
+    
     stock_data.reset_index(inplace=True)
     logging.info("Stock_data downloaded, High and Low columns removed, daily_change added")
     return stock_data
@@ -92,32 +101,37 @@ def get_commodity_data(commodity_symbol, start_date, end_date) -> pd.DataFrame:
 # It then allows for the data to be copied from the  dataframe "df = stock_data" to the table specified.
 # The code also handles error and duplicate entries.
 
-def stock_data_to_db(df, table_name, engine):
+
+# Add new data to database
+
+def data_to_db(df, table_name, engine):
     try:
         with engine.begin() as connection:
             for index, row in df.iterrows():
                 sql = text(f"""
-                    INSERT INTO {table_name} (stock_symbol, "Date", "Open", "Close", daily_change, percent_change )
-                    VALUES (:stock_symbol, :Date, :Open, :Close, :daily_change, :percent_change)
-                    ON CONFLICT (stock_symbol, "Date") DO NOTHING
+                    INSERT INTO {table_name} ("Date", "Open", "Close", daily_change, percent_change, symbol)
+                    VALUES (:Date, :Open, :Close, :daily_change, :symbol)
+                    ON CONFLICT (symbol, "Date") DO NOTHING
                 """)
                 connection.execute(sql, {
-                    'stock_symbol': row['stock_symbol'],
                     'Date': row['Date'],
                     'Open': row['Open'],
                     'Close': row['Close'],
                     'daily_change': row['daily_change'],
-                    'percent_change': row['percent_change']
+                    'percent_change': row['percent_change'],
+                    'symbol': row['symbol']
                 })
+        
 
-        # df.to_sql(name=table_name, con=engine, if_exists='append', index=False)
-        # print("Data successfully added to the database.")
-
+        
+        #df.to_sql(name=table_name, con=engine, if_exists='append', index=False)
+        #print("Data successfully added to the database.")
+    
     except UniqueViolation as e:
-        logging.error(f"Duplicate entry found for {stock_symbol} on {stock_data['date']}. Skipping insert.")
+        print(f"Duplicate entry found for {stock_symbol} on {data['date']}. Skipping insert.")
     except Exception as e:
-        logging.error(f"An error occurred while inserting data: {e}")
-
+        print(f"An error occurred while inserting data: {e}")
+    
 
 # Take csv data and load it into database
 def csv_to_db(file_path):
@@ -159,39 +173,22 @@ def fetch_stock_data(engine, stock_symbol) -> pd.DataFrame:
         logging.error(f"Error fetching stock data: {e}")
 
 
-def calculate_correlation(df1: pd.DataFrame, df2: pd.DataFrame):
-    # Align the dataframes on the same index (date)
-    df1, df2 = df1['close'].align(df2['close'], join='inner')
+def pearson_analysis(main_stock: str, other_stocks: dict, start_date: str, end_date: str) -> pd.DataFrame:
+    main_stock_df = fetch_stock_data(main_stock, start_date, end_date)
 
-    # Calculate the pearson correlation coefficient and p-value
-    correlation, p_value = pearsonr(df1, df2)
+    correlation_results - {}
+    for stock, stock_label in other_stocks.items():
+        comparison_stock_df = fetch_stock_data(stock, start_date, end_date)
+        combined_df = pd.merge(main_stock_df, comparison_stock_df, on='date', how='inner', suffixes=('_main', '_comp'))
 
-    return correlation, p_value
+        # Compute Pearson Correlation
+        correlation = combined_df['close_price_main'].corr(combined_df['close_price_comp'], method='pearson')
+        correlation_results[stock_label] = correlation
+
+    return correlation_results
 
 
-def pcor_stock(engine, stock_symbol1: str, stock_symbol2: str):
-    try:
-        # check if both stocks are contained in the database already
-        if not (does_stock_symbol_exist(engine, stock_symbol1) and does_stock_symbol_exist(engine, stock_symbol2)):
-            logging.error(
-                f"One or both of the stock symbols {stock_symbol1}, {stock_symbol2} does not exist in the database.")
-            return
 
-        # Fetch stock data
-        df1 = fetch_stock_data(engine, stock_symbol1)
-        df2 = fetch_stock_data(engine, stock_symbol2)
 
-        # Set the date column as the index
-        df1.set_index('date', inplace=True)
-        df2.set_index('date', inplace=True)
 
-        # Check if dataframes are not empty
-        if not df1.empty and not df2.empty and df1.index.equals(df2.index):
-            correlation, p_value = calculate_correlation(df1, df2)
-
-            if not pd.isnull(correlation) and not pd.isnull(p_value) and -1 <= correlation <= 1:
-                logging.info(f'Pearson correlation coefficient: {correlation}')
-                logging.info(f'P-value: {p_value}')
-
-    except Exception as e:
-        logging.exception(f'An error occurred: {e}')
+# Code Creates
