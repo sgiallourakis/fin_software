@@ -226,6 +226,41 @@ SG
  	REWRITE CORRELATION CODE
  		I am going to rewrite the code so that we can handle multiple stock/commodities identities. There will be a main stock that is compared against a dictionary of stock/commodity items. This will hopefully future proof some of the back end code. I want to be able to implement a front-end design that allows the user to select a max of 5 stocks and then run a correlation analysis.
 
+ 	NOT COMPLETE
+
+
+----- 07/30/2024 -----
+SG
+-- TODAYS GOAL --
+	I need to continue to download data for the database. I also need to look into dockerizing the database so that it can be truly open-source.
+
+	Research For the Day:
+	Look at docker documentation and see if it is possible to dockerize already exhisting database.
+
+	Look up companies that use copper.
+
+	NOTES --
+
+	Since I am pulling the data from yahoo finance, I decided to use the sectors they have defined. There is a total of 9 sectors. I created list that contain the top 25 companies in each sector.
+
+	I did research Docker, I am able to move my already created database into a new Docker Container. This will allow any user to deploy the environment and the data I have collected.
+
+	ACCOMPLISHED:
+	Completed Research Needed To Create Docker Container and move my database into it.
+
+	Created Sectors lists that will allow me to begin my initial data analysis.
+
+-----
+
+----- 07/31/2024 -----
+SG
+-- TODAYS GOAL --
+	Create Docker Container
+		- Setup Environment inside container
+		- Move database into docker container
+
+
+
 
 
 
